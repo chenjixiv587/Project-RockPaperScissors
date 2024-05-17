@@ -1,6 +1,6 @@
 const choices = ["rock", "paper", "scissors"];
-const humanScore = 0;
-const computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
 function getComputerChoice(choices) {
     const choiceIndex = Math.floor(Math.random() * choices.length);
     return choices[choiceIndex];
@@ -38,16 +38,37 @@ function winOrLose(value1, value2) {
 function playRound(humanSelection, computerSelection) {
     let res = winOrLose(choiceToValue(computerSelection), choiceToValue(humanSelection));
     if (res === "Computer win") {
+        computerScore++;
         return `${res}! ${computerSelection} beats ${humanSelection}`
     } else if (res === "You win") {
+        humanScore++;
         return `${res}! ${humanSelection} beats ${computerSelection}`
     } else {
         return res;
     }
 
 }
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice(choices);
 
-const playedResult = playRound(humanSelection, computerSelection);
-console.log(playedResult);
+
+function playGame() {
+
+
+    for (let i = 0; i < 5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice(choices);
+        // playRound(humanSelection, computerSelection, computerScore, humanScore);
+        playRound(humanSelection, computerSelection);
+        // console.log(humanScore, computerScore);
+    }
+    if (humanScore > computerScore) {
+        return "You win";
+    }
+    else if (humanScore === computerScore) {
+        return "Equal";
+    }
+    else if (humanScore < computerScore) {
+        return "Computer win";
+    }
+}
+
+console.log(playGame());
