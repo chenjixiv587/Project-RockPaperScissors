@@ -1,4 +1,4 @@
-const choices = ["rock", "paper", "scissors"];
+const CHOICES = ["rock", "paper", "scissors"];
 let humanScore = 0;
 let computerScore = 0;
 function getComputerChoice(choices) {
@@ -8,7 +8,11 @@ function getComputerChoice(choices) {
 
 // console.log(getComputerChoice(choices));
 function getHumanChoice() {
-    const humanChoice = prompt("What do you choose: 'rock, paper, scissors'? ");
+    let humanChoice = prompt("What do you choose: 'rock, paper, scissors'? ");
+    while (!CHOICES.includes(humanChoice)) {
+        alert("Have to give the right choice");
+        humanChoice = prompt("What do you choose: 'rock, paper, scissors'? ");
+    }
     return humanChoice.toLowerCase();
 }
 // console.log(getHumanChoice());
@@ -55,7 +59,7 @@ function playGame() {
 
     for (let i = 0; i < 5; i++) {
         const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice(choices);
+        const computerSelection = getComputerChoice(CHOICES);
         // playRound(humanSelection, computerSelection, computerScore, humanScore);
         playRound(humanSelection, computerSelection);
         // console.log(humanScore, computerScore);
