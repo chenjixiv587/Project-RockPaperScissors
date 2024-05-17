@@ -1,4 +1,6 @@
 const choices = ["rock", "paper", "scissors"];
+const humanScore = 0;
+const computerScore = 0;
 function getComputerChoice(choices) {
     const choiceIndex = Math.floor(Math.random() * choices.length);
     return choices[choiceIndex];
