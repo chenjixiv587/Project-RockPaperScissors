@@ -44,9 +44,17 @@ function playRound(humanSelection, computerSelection) {
 
 const userChoices = document.querySelector(".choices");
 const showResult = document.querySelector(".showResult");
+const controller = new AbortController();
 userChoices.addEventListener("click", (e) => {
     let humanSelection = e.target.textContent.toLowerCase();
     let computerSelection = getComputerChoice(CHOICES);
     let result = playRound(humanSelection, computerSelection);
-    showResult.textContent = result;
-})
+    showResult.textContent = `${result}, Human Now Score: ${humanScore}, Computer Now Score: ${computerScore}`;
+    if (humanScore >= 5) {
+        showResult.textContent = "You win!"
+        controller.abort();
+    } else if (computerScore >= 5) {
+        showResult.textContent = "Computer win!"
+        controller.abort();
+    }
+}, { signal: controller.signal });
