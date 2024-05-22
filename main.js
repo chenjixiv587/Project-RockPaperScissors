@@ -42,12 +42,11 @@ function playRound(humanSelection, computerSelection) {
     }
 }
 
-
-
-
 const userChoices = document.querySelector(".choices");
+const showResult = document.querySelector(".showResult");
 userChoices.addEventListener("click", (e) => {
     let humanSelection = e.target.textContent.toLowerCase();
     let computerSelection = getComputerChoice(CHOICES);
-
+    let result = playRound(humanSelection, computerSelection);
+    showResult.textContent = result;
 })
