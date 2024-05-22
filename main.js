@@ -55,15 +55,11 @@ function playRound(humanSelection, computerSelection) {
 
 
 function playGame() {
-
-
-    for (let i = 0; i < 5; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice(CHOICES);
-        // playRound(humanSelection, computerSelection, computerScore, humanScore);
-        playRound(humanSelection, computerSelection);
-        // console.log(humanScore, computerScore);
-    }
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice(CHOICES);
+    // playRound(humanSelection, computerSelection, computerScore, humanScore);
+    playRound(humanSelection, computerSelection);
+    // console.log(humanScore, computerScore);
     if (humanScore > computerScore) {
         return "You win";
     }
